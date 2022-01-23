@@ -10,3 +10,7 @@
 ## 启动
 
 * python3 manage.py runserver localhost:8000
+
+## 前端项目启动
+
+* yarn dev
