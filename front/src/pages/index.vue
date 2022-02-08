@@ -43,15 +43,148 @@
               <el-card shadow="always">线上环境</el-card>
             </el-col>
           </el-row>
+          <br />
+          <el-card>
+            <el-row :gutter="2">
+              <el-col :span="6">
+                <el-progress type="dashboard" :percentage="80">
+                  <template #default="{ percentage }">
+                    <span class="percentage-value">{{ percentage }}%</span>
+                    <br />
+                    <span class="percentage-label">分支管理</span>
+                  </template>
+                </el-progress>
+              </el-col>
+              <el-col :span="6">
+                <el-progress type="dashboard" :percentage="80">
+                  <template #default="{ percentage }">
+                    <span class="percentage-value">{{ percentage }}%</span>
+                    <br />
+                    <span class="percentage-label">构建</span>
+                  </template>
+                </el-progress>
+              </el-col>
+              <el-col :span="6">
+                <el-progress type="dashboard" :percentage="80">
+                  <template #default="{ percentage }">
+                    <span class="percentage-value">{{ percentage }}%</span>
+                    <br />
+                    <span class="percentage-label">发布</span>
+                  </template>
+                </el-progress>
+              </el-col>
+            </el-row>
+          </el-card>
+          <br />
+          <el-card>
+            <el-button type="primary" @click="dialogVisible = true">新建</el-button>
+            <br />
+            <br />
+            <el-table :data="tableData" stripe border style="width: 100%">
+              <el-table-column prop="demand" label="需求" />
+              <el-table-column prop="developer" label="开发人员" />
+              <el-table-column prop="branch" label="分支" />
+              <el-table-column prop="commit" label="预览代码" />
+              <el-table-column fixed="right" label="Operations" width="120">
+                <template #default>
+                  <el-button type="text" size="small" @click="addToFlow">加入集成</el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+          </el-card>
+          <br />
+          <el-card>
+            <el-button type="primary" @click="publish">点击发布</el-button>
+            &nbsp;&nbsp;
+            <span>当前分支： featrue-128129-218919</span>
+            <br />
+            <br />
+            <el-table :data="tableData" stripe border style="width: 100%">
+              <el-table-column prop="demand" label="需求" />
+              <el-table-column prop="developer" label="开发人员" />
+              <el-table-column prop="branch" label="分支" />
+              <el-table-column prop="commit" label="预览代码" />
+              <el-table-column fixed="right" label="Operations" width="120">
+                <template #default>
+                  <el-button type="text" size="small" @click="exitFlow">退出集成</el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+          </el-card>
         </el-scrollbar>
       </el-main>
     </el-container>
   </el-container>
+  <el-dialog v-model="dialogVisible" title="新建需求" destroy-on-close center>
+    <el-form ref="formRef" :model="form" label-width="120px">
+      <el-form-item label="开发人员">
+        <el-input v-model="form.name"></el-input>
+      </el-form-item>
+      <el-form-item label="测试人员">
+        <el-select v-model="form.region" placeholder="请选择测试">
+          <el-option label="测试1" value="shanghai"></el-option>
+          <el-option label="测试1" value="beijing"></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="预计发布时间">
+        <el-date-picker v-model="form.date1" type="date" placeholder="选择时间" />
+      </el-form-item>
+      <el-form-item label="分支名">
+        <el-row>
+          <el-col :span="5">featrure-</el-col>
+          <el-col :span="6"><el-input v-model="form.name"></el-input></el-col>
+          <el-col :span="10">-{{ currentTime }}</el-col>
+        </el-row>
+      </el-form-item>
+      <el-form-item label="需求描述">
+        <el-input v-model="form.desc" type="textarea"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="onSubmit">创建</el-button>
+        <el-button>取消</el-button>
+      </el-form-item>
+    </el-form>
+  </el-dialog>
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
-  import { Menu as IconMenu, Setting } from '@element-plus/icons-vue'
+  import { ref, reactive, onMounted } from 'vue'
+  import request from '../request'
+  const dialogVisible = ref(false)
+  const currentTime = ref(Date.now())
+  const form = reactive({
+    name: '',
+    region: '',
+    date1: '',
+    date2: '',
+    delivery: false,
+    type: [],
+    resource: '',
+    desc: ''
+  })
+  onMounted(() => {
+    console.log('111', this)
+    request.get('/1111').then(() => {
+      cosnole.log('1111')
+    })
+  })
+  const tableData = [
+    {
+      developer: 'wqf',
+      branch: 'feature-sxxx-12312',
+      commit: 'asldka1238sks',
+      demand: '需求'
+    }
+  ]
+  const addToFlow = () => {
+    console.log('加入集成')
+  }
+  const exitFlow = () => {
+    console.log('退出集成')
+  }
+  const publish = () => {
+    console.log('点击发布')
+  }
 </script>
 
 <style lang="less" scope>
@@ -77,6 +210,9 @@
     }
     .el-main {
       padding: 0;
+    }
+    .el-scrollbar {
+      padding: 20px;
     }
     .toolbar {
       position: absolute;

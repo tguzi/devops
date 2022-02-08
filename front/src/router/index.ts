@@ -5,6 +5,10 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('@/pages/index.vue')
+  },
+  {
+    path: '/edit',
+    component: () => import('@/pages/edit.vue')
   }
 ]
 
