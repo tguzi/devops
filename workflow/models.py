@@ -1,5 +1,10 @@
 from django.db import models
 
-# Create your models here.
-class Question(models.Model):
-  question_text = models.CharField(max_length=200)
+
+class Branch(models.Model):
+    publishTime = models.DateTimeField()
+    description = models.CharField(max_length=64)
+    branch = models.CharField(max_length=64)
+    developer = models.CharField(max_length=12)
+    tester = models.CharField(max_length=12)
+    correlation = models.CharField(max_length=12)
