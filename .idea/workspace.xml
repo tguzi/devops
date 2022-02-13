@@ -5,20 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ccffefc-6321-4ea4-a1ed-e1bb59098296" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/devops.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frivolous" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/devops/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/devops/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/components.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mydatabase" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/workflow/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/workflow/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/request.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/workflow/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/workflow/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workflow/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/workflow/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,11 +102,24 @@
       <workItem from="1643505849216" duration="965000" />
       <workItem from="1643506897163" duration="1003000" />
       <workItem from="1644218135623" duration="2680000" />
+      <workItem from="1644330192191" duration="918000" />
+      <workItem from="1644331196033" duration="2010000" />
+      <workItem from="1644376947838" duration="5862000" />
+      <workItem from="1644416305197" duration="376000" />
+      <workItem from="1644417635709" duration="819000" />
+      <workItem from="1644418473511" duration="251000" />
+      <workItem from="1644419132660" duration="355000" />
+      <workItem from="1644420136963" duration="97000" />
+      <workItem from="1644420467639" duration="40000" />
+      <workItem from="1644745565517" duration="2040000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

@@ -164,8 +164,9 @@
   })
   onMounted(() => {
     console.log('111', this)
-    request.get('/1111').then(() => {
-      cosnole.log('1111')
+    // http://localhost:8000/api/workflow/init
+    request.get('/api/workflow/init').then((res) => {
+      console.log('1111', res)
     })
   })
   const tableData = [

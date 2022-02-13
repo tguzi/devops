@@ -2,13 +2,10 @@ import axios from 'axios'
 import { ElMessage } from 'element-plus'
 
 const instance = axios.create({
-  headers: {
-    'Content-Type': 'application/json;charset=UTF-8',
-    'Access-Control-Allow-Origin-Type': '*'
-  },
   timeout: 50000,
-  baseURL: window.location.origin,
-  withCredentials: true
+  // baseURL: window.location.origin,
+  baseURL: 'http://localhost:8000',
+  withCredentials: true,
 })
 
 instance.interceptors.request.use(
