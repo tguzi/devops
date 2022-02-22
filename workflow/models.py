@@ -12,8 +12,8 @@ class Demand(models.Model):
 
 
 class Env(models.Model):
-    branch = models.CharField(max_length=32)
+    branch = models.CharField(max_length=32, default='')
     name = models.CharField(max_length=12)
-    config = models.CharField(max_length=64)
+    config = models.CharField(max_length=64, default='')
     env = models.CharField(max_length=12)
-    demands = models.CharField(max_length=64)
+    demands = models.CharField(max_length=64, default='')

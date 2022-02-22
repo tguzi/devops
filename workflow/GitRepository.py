@@ -2,13 +2,14 @@ import os
 from git.repo import Repo
 from git.repo.fun import is_git_dir
 
-class GitRepository(object):
-    """
-    git仓库管理
-    """
+"""
+git仓库管理
+"""
 
-    def __init__(self, local_path, repo_url, branch='master'):
-        self.local_path = local_path
+
+class GitRepository(object):
+    def __init__(self, local_dir, repo_url, branch='master'):
+        self.local_path = local_dir
         self.repo_url = repo_url
         self.repo = None
         self.initial(repo_url, branch)
@@ -94,6 +95,5 @@ if __name__ == '__main__':
     local_path = os.path.join('codes', 't1')
     repo = GitRepository(local_path, '')
     branch_list = repo.branches()
-    print(branch_list)
     repo.change_to_branch('dev')
     repo.pull()
