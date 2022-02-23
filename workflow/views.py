@@ -1,5 +1,5 @@
 import os
-
+import json
 from django.http import JsonResponse
 
 from workflow.GitRepository import GitRepository
@@ -26,10 +26,23 @@ devops_git = GitRepository(local_path, repo_path)
 
 def init(request):
     if request.method == 'GET':
-        env_list = Env.objects.all().values()
-        successRes['data'] = list(env_list)
-        # print(devops_git.change_to_branch())
-        return JsonResponse(successRes, content_type='application/json')
+        try:
+            env_str = request.GET.get('env', 'test')
+            # 获取列表信息
+            # env_list = Env.objects.all().values()
+            # successRes['data'] = list(env_list)
+            env_info = Env.objects.filter(env=env_str).values()[0]
+            if env_info.branch == '':
+                branch_name = 'feature-'
+                print(111)
+
+            successRes['data'] = env_info
+            # print(devops_git.change_to_branch())
+            return JsonResponse(successRes, content_type='application/json')
+        except Exception as err:
+            print(err)
+            # errRes['msg'] = type(err)
+            return JsonResponse(errRes)
     else:
         return JsonResponse(errRes)
 

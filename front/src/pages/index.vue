@@ -163,7 +163,6 @@
     desc: ''
   })
   onMounted(() => {
-    console.log('111', this)
     // http://localhost:8000/api/workflow/init
     request.get('/api/workflow/init').then((res) => {
       console.log('1111', res)

@@ -7,12 +7,9 @@
     <list default="true" id="9ccffefc-6321-4ea4-a1ed-e1bb59098296" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/devops/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/devops/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/devops/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/devops/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gitflow1/gitManage.py" beforeDir="false" afterPath="$PROJECT_DIR$/workflow/GitRepository.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gitflow1/operate.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gitflow1/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/workflow/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/workflow/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workflow/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/workflow/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/request.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workflow/GitRepository.py" beforeDir="false" afterPath="$PROJECT_DIR$/workflow/GitRepository.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/workflow/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/workflow/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -174,7 +171,7 @@
       <workItem from="1644915749329" duration="1507000" />
       <workItem from="1645275199284" duration="433000" />
       <workItem from="1645320651386" duration="9924000" />
-      <workItem from="1645519560047" duration="553000" />
+      <workItem from="1645519560047" duration="4969000" />
     </task>
     <servers />
   </component>
@@ -183,6 +180,17 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

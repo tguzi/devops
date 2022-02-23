@@ -21,6 +21,7 @@ class GitRepository(object):
         :param branch:
         :return:
         """
+
         if not os.path.exists(self.local_path):
             os.makedirs(self.local_path)
 
@@ -66,7 +67,7 @@ class GitRepository(object):
 
     def change_to_branch(self, branch):
         """
-        切换分值
+        切换分支
         :param branch:
         :return:
         """
@@ -89,6 +90,13 @@ class GitRepository(object):
         :return:
         """
         self.repo.git.checkout(tag)
+
+    def change_branch_and_push(self, branch):
+        """
+            切换分支，并且推送
+        """
+        self.change_to_branch(branch=branch)
+        self.repo.git.push()
 
 
 if __name__ == '__main__':
