@@ -7,6 +7,8 @@
 * django 3.2.9
 
 
+## 项目目录
+
 ## 启动
 
 * python3 manage.py runserver 
