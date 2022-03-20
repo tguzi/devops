@@ -97,7 +97,6 @@ class GitRepository(object):
         self.repo.git.checkout(tag)
 
     def create_remote_branch(self, branch):
-        print('branch', branch)
         """
             创建远程分支
         """
@@ -106,7 +105,7 @@ class GitRepository(object):
             # 把本地分支推送到远程
             self.repo.git.push('origin', branch)
         except Exception as err:
-            print('err: ', err)
+            return err.__str__()
 
     def merge_and_push(self, target, origins):
         """
@@ -114,12 +113,11 @@ class GitRepository(object):
         """
         try:
             self.repo.git.checkout(target)
-            self.repo.remote.fetch()
+            self.repo.git.fetch()
             for origin in origins:
                 self.repo.git.merge(origin)
-            self.repo.git.push('origin')
+            self.repo.git.push('origin', target)
         except Exception as err:
-            print('err: ', err)
             return err.__str__()
 
     def delete_remote_branches(self, branches):

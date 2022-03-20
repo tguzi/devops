@@ -6,13 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9ccffefc-6321-4ea4-a1ed-e1bb59098296" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/request.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/front/yarn.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/workflow/GitRepository.py" beforeDir="false" afterPath="$PROJECT_DIR$/workflow/GitRepository.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workflow/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/workflow/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workflow/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/workflow/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/workflow/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/workflow/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -194,7 +190,7 @@
       <workItem from="1647178420400" duration="1428000" />
       <workItem from="1647266217334" duration="6549000" />
       <workItem from="1647528687895" duration="3330000" />
-      <workItem from="1647697391796" duration="12141000" />
+      <workItem from="1647697391796" duration="15496000" />
     </task>
     <servers />
   </component>

@@ -3,7 +3,7 @@ import qs from 'qs'
 import { ElMessage } from 'element-plus'
 
 const instance = axios.create({
-  timeout: 5000,
+  timeout: 15000,
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded'
   },

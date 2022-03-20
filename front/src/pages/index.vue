@@ -4,9 +4,7 @@
       <el-scrollbar>
         <el-menu :default-openeds="['1', '3']">
           <el-sub-menu index="1">
-            <template #title>
-              <el-icon><IconMenu /></el-icon>导航
-            </template>
+            <template #title>导航</template>
             <el-menu-item-group>
               <el-menu-item>分支流水</el-menu-item>
             </el-menu-item-group>
@@ -19,7 +17,6 @@
       <el-header style="text-align: right; font-size: 12px">
         <div class="toolbar">
           <el-dropdown>
-            <el-icon style="margin-right: 8px; margin-top: 1px"><setting /></el-icon>
             <template #dropdown>
               <el-dropdown-menu>
                 <el-dropdown-item>查看</el-dropdown-item>
@@ -44,38 +41,6 @@
         </el-row>
         <br />
         <el-card>
-          <el-row :gutter="2">
-            <el-col :span="6">
-              <el-progress type="dashboard" :percentage="80">
-                <template #default="{ percentage }">
-                  <span class="percentage-value">{{ percentage }}%</span>
-                  <br />
-                  <span class="percentage-label">分支管理</span>
-                </template>
-              </el-progress>
-            </el-col>
-            <el-col :span="6">
-              <el-progress type="dashboard" :percentage="80">
-                <template #default="{ percentage }">
-                  <span class="percentage-value">{{ percentage }}%</span>
-                  <br />
-                  <span class="percentage-label">构建</span>
-                </template>
-              </el-progress>
-            </el-col>
-            <el-col :span="6">
-              <el-progress type="dashboard" :percentage="80">
-                <template #default="{ percentage }">
-                  <span class="percentage-value">{{ percentage }}%</span>
-                  <br />
-                  <span class="percentage-label">发布</span>
-                </template>
-              </el-progress>
-            </el-col>
-          </el-row>
-        </el-card>
-        <br />
-        <el-card>
           <el-button type="primary" @click="dialogVisible = true">新建</el-button>
           <br /><br />
           <el-table :data="initInfo.values.demands" border stripe style="width: 100%">
@@ -85,17 +50,24 @@
             <el-table-column prop="commit" label="预览代码" />
             <el-table-column label="操作" width="120">
               <template #default="scope">
-                <el-button type="text" size="small" @click="deleteDemand(scope.row.id)">删除</el-button>
-                <el-button type="text" size="small" @click="addToFlow(scope.row.id, scope.row.branch)">加入集成</el-button>
+                <el-button type="text" size="small" @click="deleteDemand(scope.row.id)"
+                  >删除</el-button
+                >
+                <el-button
+                  type="text"
+                  size="small"
+                  @click="addToFlow(scope.row.id, scope.row.branch)"
+                  >加入集成</el-button
+                >
               </template>
             </el-table-column>
           </el-table>
         </el-card>
         <br />
         <el-card>
-          <el-button type="primary" @click="publish">点击发布</el-button>
-          &nbsp;&nbsp;
-          <span>当前分支： {{ initInfo.values.branch }}</span>
+          <span
+            >发布分支： <a href="script:void(0)">{{ initInfo.values.branch }}</a></span
+          >
           <br />
           <br />
           <el-table :data="initInfo.values.integratedList" stripe border style="width: 100%">
@@ -105,7 +77,12 @@
             <el-table-column prop="commit" label="预览代码" />
             <el-table-column fixed="right" label="Operations" width="120">
               <template #default="scope">
-                <el-button type="text" size="small" @click="exitFlow(scope.row.demandId, scope.row.envId)">退出集成</el-button>
+                <el-button
+                  type="text"
+                  size="small"
+                  @click="exitFlow(scope.row.demandId, scope.row.envId, scope.row.envBranch)"
+                  >退出集成</el-button
+                >
               </template>
             </el-table-column>
           </el-table>
@@ -114,7 +91,7 @@
     </el-container>
   </el-container>
   <el-dialog v-model="dialogVisible" title="新建需求" destroy-on-close center>
-    <el-form ref="formRef" :model="form" label-width="120px">
+    <el-form :model="form" label-width="120px">
       <el-form-item label="开发人员">
         <el-input v-model="form.developer"></el-input>
       </el-form-item>
@@ -124,7 +101,13 @@
         </el-select>
       </el-form-item>
       <el-form-item label="预计发布时间">
-        <el-date-picker v-model="form.date" type="date" value-format="YYYY-MM-DD HH:MM:ss" format="YYYY-MM-DD HH:MM:ss" placeholder="选择时间" />
+        <el-date-picker
+          v-model="form.date"
+          type="date"
+          value-format="YYYY-MM-DD HH:MM:ss"
+          format="YYYY-MM-DD HH:MM:ss"
+          placeholder="选择时间"
+        />
       </el-form-item>
       <el-form-item label="分支名">
         <el-row>
@@ -194,10 +177,11 @@
     })
     console.log(params)
   }
-  const exitFlow = (demandId: number, envId: number) => {
+  const exitFlow = (demandId: number, envId: number, branch: string) => {
     const params = {
       envId: envId,
-      demandId: demandId
+      demandId: demandId,
+      envBranch: branch
     }
     request.post('/api/workflow/integration/exit', params).then(() => {
       loadData()

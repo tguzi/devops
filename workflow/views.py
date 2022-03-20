@@ -78,7 +78,6 @@ def add_demand(request):
         developer = request.POST.get('developer')
         tester = request.POST.get('tester')
         branch_name = request.POST.get('branch_name')
-        print('branch_name', branch_name)
         GitRepository.create_remote_branch(devops_git, branch_name)
         Demand.objects.create(
             publishTime=publish_time,
@@ -142,6 +141,7 @@ def exit_integration(request):
     try:
         env_id = request.POST.get('envId')
         demand_id = request.POST.get('demandId')
+        origin_branch = request.POST.get('envBranch')
         # 删除关系
         RelationDemandEnv.objects.filter(env_id=env_id, demand_id=demand_id).delete()
         # 更新集成信息
@@ -149,6 +149,11 @@ def exit_integration(request):
         Env.objects.filter(id=env_id).update(branch=new_branch)
         # 现有的集成
         env_demand_list = RelationDemandEnv.objects.filter(env_id=env_id).values_list('demand__branch', flat=True)
+        # 删除老分支
+        GitRepository.delete_remote_branches(devops_git, [origin_branch])
+        # 创建新的分支
+        GitRepository.create_remote_branch(devops_git, new_branch)
+        # 合并分支
         GitRepository.merge_and_push(devops_git, new_branch, env_demand_list)
         return JsonResponse(successRes)
     except Exception as err:
