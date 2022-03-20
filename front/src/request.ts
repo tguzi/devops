@@ -1,8 +1,12 @@
 import axios from 'axios'
+import qs from 'qs'
 import { ElMessage } from 'element-plus'
 
 const instance = axios.create({
   timeout: 5000,
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
   // baseURL: window.location.origin,
   baseURL: 'http://127.0.0.1:8000',
   withCredentials: true
@@ -10,6 +14,9 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
+    if (config.method === 'post') {
+      config.data = qs.stringify(config.data)
+    }
     return config
   },
   (error) => {

@@ -12,6 +12,7 @@ class GitRepository(object):
         self.local_path = local_dir
         self.repo_url = repo_url
         self.repo = None
+        self.origin = None
         self.initial(repo_url, branch)
 
     def initial(self, repo_url, branch):
@@ -21,14 +22,12 @@ class GitRepository(object):
         :param branch:
         :return:
         """
-
         if not os.path.exists(self.local_path):
             os.makedirs(self.local_path)
 
         git_local_path = os.path.join(self.local_path, '.git')
         if not is_git_dir(git_local_path):
-            self.repo = Repo.clone_from(
-                repo_url, to_path=self.local_path, branch=branch)
+            self.repo = Repo.clone_from(repo_url, to_path=self.local_path, branch=branch)
         else:
             self.repo = Repo(self.local_path)
 
@@ -38,6 +37,12 @@ class GitRepository(object):
         :return:
         """
         self.repo.git.pull()
+
+    def fetch(self):
+        """
+            fetch操作
+        """
+        self.repo.remote.fetch()
 
     def branches(self):
         """
@@ -91,17 +96,47 @@ class GitRepository(object):
         """
         self.repo.git.checkout(tag)
 
-    def change_branch_and_push(self, branch):
+    def create_remote_branch(self, branch):
+        print('branch', branch)
         """
-            切换分支，并且推送
+            创建远程分支
         """
-        self.change_to_branch(branch=branch)
-        self.repo.git.push()
+        try:
+            self.repo.git.checkout('HEAD', b=branch)
+            # 把本地分支推送到远程
+            self.repo.git.push('origin', branch)
+        except Exception as err:
+            print('err: ', err)
+
+    def merge_and_push(self, target, origins):
+        """
+            合并分支，并且推送
+        """
+        try:
+            self.repo.git.checkout(target)
+            self.repo.remote.fetch()
+            for origin in origins:
+                self.repo.git.merge(origin)
+            self.repo.git.push('origin')
+        except Exception as err:
+            print('err: ', err)
+            return err.__str__()
+
+    def delete_remote_branches(self, branches):
+        """
+        批量删除远程分支
+        """
+        repo_remote = self.repo.remote(name='origin')
+        # 校验是否有远程分支
+        for repo_branch in self.repo.references:
+            if repo_branch.name in branches:
+                print("deleting remote branch: %s" % repo_branch)
+                repo_remote.push(refspec=(":%s" % repo_branch))
 
 
 if __name__ == '__main__':
     local_path = os.path.join('codes', 't1')
     repo = GitRepository(local_path, '')
     branch_list = repo.branches()
-    repo.change_to_branch('dev')
+    repo.change_to_branch('master')
     repo.pull()
